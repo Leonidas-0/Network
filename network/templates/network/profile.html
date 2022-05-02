@@ -1,0 +1,22 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+<script src="{% static 'network/following.js' %}"></script>
+<script src="{% static 'network/api.js' %}"></script>
+{% endblock %}
+{% block body %}
+{% if user.is_authenticated %}
+<div style="text-align:center">
+    <h1>You</h1>
+    <div id="followers"></div>
+    <div id="following"></div>
+    <form method="POST">{% csrf_token %}
+        {{ newpost }}
+        <div><input type="submit" id="submit" value="Post" class="btn btn-primary"></div>
+    </form>
+</div>
+<br>
+{% include "network/posts.html" %}
+{% endif %}
+{% endblock %}

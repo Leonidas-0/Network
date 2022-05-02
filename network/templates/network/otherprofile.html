@@ -1,0 +1,18 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+<script src="{% static 'network/api.js' %}"></script>
+<script src="{% static 'network/following.js' %}"></script>
+{% endblock %}
+{% block body %}
+<div style="text-align: center;">
+    <h1>{{ user.username }}</h1>
+    {% if request.user.is_authenticated %}
+    <button id="follow"></button>
+    {% endif %}
+    <div id="followers"></div>
+    <div id="following"></div>
+</div>
+{% include "network/posts.html" %}
+{% endblock %}

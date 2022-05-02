@@ -1,0 +1,28 @@
+<div id="all">
+    {% for post in posts %}
+    <div class="postcontent">
+        {% if post.user != request.user %}
+        <input type="hidden" name="edit" id="edit"></input>
+        {% else %}
+        <input type="button" class="btn btn-secondary" value="edit" name="edit" id="edit"></input>
+        {% endif %}
+        <div class="post">
+            <a class="username" id="{{ post.user.id }}" href="{% url 'other_profile' post.user.id %}">
+                <h5>{{ post.user.username }}</h5>
+            </a>
+            <div class="name" id="{{ post.id }}">
+                <div>{{ post.date }}</div>
+                <div style="font-size: 25px;">{{ post.post }}</div>
+            </div>
+            <div class="heart"><span id="likenum"></span></div>
+        </div>
+        <div class="editdiv">
+            <form method="POST">{% csrf_token %}
+                <textarea name="content" class="textarea" placeholder="edit">{{ post.post }}</textarea>
+                <div><button class="btn btn-primary" id="subedit">Edit Post</button></div>
+            </form>
+        </div>
+        <br>
+    </div>
+    {% endfor %}
+</div>

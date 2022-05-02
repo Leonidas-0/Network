@@ -1,0 +1,33 @@
+@keyframes like {
+    20% {
+        top: -3px;
+    }
+    70% {
+        top: -7px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+#main {
+    position: relative;
+    top: 0px;
+    width: 20px;
+    animation: like;
+    animation-play-state: paused;
+    animation-duration: 0.2s;
+}
+.textarea {
+    height: 50; 
+    width: 3;
+    border-radius: 10px; 
+    font-size: large;
+}
+.editdiv {
+    display: none;
+}
+
+#all {
+    text-align: center;
+}

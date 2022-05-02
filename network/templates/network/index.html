@@ -1,0 +1,14 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<div style="text-align:center">
+    <form method="POST">{% csrf_token %}
+        {{ newpost }}
+        <div><input type="submit" id="submit" value="Post" class="btn btn-primary"></div>
+    </form>
+</div>
+<br>
+{% endif %}
+{% include "network/posts.html" %}
+{% endblock %}
